@@ -12,6 +12,12 @@ fillTable(columnId)
 const url = 'http://localhost:8080/users'
 fetch(url)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        console.log(data)
+        data.forEach( userFromData => console.log(userFromData.firstName)
+
+        )
+    }
+    )
     .catch(error => console.error(error))
 
