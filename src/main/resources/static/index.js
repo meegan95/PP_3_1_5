@@ -5,16 +5,21 @@ let columnAge = document.getElementById('columnAge')
 let columnUsername = document.getElementById('columnUsername')
 let columnRole = document.getElementById('columnRole')
 
-// <td id="columnId" th:text="id"></td>
-// <td id="columnFirstName" th:text="firstName"></td>
-// <td id="columnLastName" th:text="lastName"></td>
-// <td id="columnAge" th:text="age"></td>
-// <td id="columnUsername" th:text="username"></td>
-// <td id="columnRole"
+
+
+//     "role": [
+//     {
+//         "id": 1,
+//         "name": "ROLE_ADMIN",
+//         "authority": "ROLE_ADMIN",
+//         "roleName": "ADMIN "
+//     }
+// ]
 
  function fillTable(textContent, content) {
     textContent.textContent = content
  }
+
 
 const url = 'http://localhost:8080/users'
 fetch(url)
@@ -27,7 +32,7 @@ fetch(url)
                 fillTable(columnLastName,userFromRequest.lastName)
                 fillTable(columnAge,userFromRequest.age)
                 fillTable(columnUsername,userFromRequest.username)
-                fillTable(columnRole,userFromRequest.role)
+                fillTable(columnRole,userFromRequest.role.map(role => role.name.substring(5)))
                 })
         })
     .catch(error => console.error(error))
