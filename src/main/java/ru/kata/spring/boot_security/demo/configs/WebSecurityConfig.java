@@ -26,9 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/users/**").permitAll() // Добавил чтобы работал POSTMAN
                 .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
-                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER")
+//                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER") /// Скрыл чтобы работал POSTMAN
                 .and()
+                .csrf().disable() // Добавил чтобы работал POSTMAN
                 .formLogin()
                 .loginProcessingUrl("/process_login")
                 .successHandler(successUserHandler)

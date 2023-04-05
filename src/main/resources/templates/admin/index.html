@@ -160,7 +160,7 @@
 
                                                                 <select id="editUserRoles" class="form-select" required
                                                                         name="roles" multiple size="2">
-                                                                    <option  th:each="role: ${allRoles}"
+                                                                    <option th:each="role: ${allRoles}"
                                                                             th:value="${role.getId()}"
                                                                             th:text="${role.getRoleName()}" selected>
                                                                     </option>
