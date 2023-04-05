@@ -1,5 +1,5 @@
 
-const tableUser = document.getElementById('tableAllUsers')
+const tableUser = document.getElementById('tableUser')
 
 
 
@@ -25,4 +25,4 @@ fetch(url)
         })
         tableUser.innerHTML= columnElement
     })
-// .catch(error => console.error(error))
+    // .catch(error => console.error(error))
