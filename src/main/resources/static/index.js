@@ -2,6 +2,7 @@ const tableUser = document.getElementById('tableAllUsers')
 const tableOneUser = document.getElementById('tableOneUser')
 const modalEditButton = document.getElementById('modalEditButton')
 const modalDeleteButton = document.getElementById('modalDeleteButton')
+const newUserButton = document.getElementById('newUserButton')
 
 const url = 'http://localhost:8080/users'
 const urlForOne = 'http://localhost:8080/users/1'
@@ -150,4 +151,75 @@ fetch(urlForOne)
            `
         console.log(columnElement)
         modalDeleteButton.innerHTML = columnElement
+    })
+
+
+fetch(urlForOne)
+    .then(response => response.json())
+    .then(user => {
+        let columnElement = `
+                     <p>
+                            <label class="container-fluid col-6" for="firstName">
+                                <strong>First Name</strong>
+                                <input class="form-control" type="text"
+                                       name="firstName" id="firstName"
+                                       placeholder="First name"
+                                       value="${user.firstName}">
+                            </label>
+                        </p>
+
+                        <p>
+                            <label class="container-fluid col-6" for="lastName">
+                                <strong>Last Name</strong>
+                                <input class="form-control" type="text"
+                                       name="name" id="lastName"
+                                       placeholder="Last name"
+                                       value="${user.lastName}">
+                            </label>
+                        </p>
+
+                        <p>
+                            <label class="container-fluid col-6" for="age">
+                                <strong>Age</strong>
+                                <input class="form-control" type="text"
+                                       name="name" id="age"
+                                       placeholder="Age"
+                                       value="${user.age}">
+                            </label>
+                        </p>
+
+                        <p>
+                            <label class="container-fluid col-6" for="username">
+                                <strong>Email</strong>
+                                <input class="form-control" type="email"
+                                       name="username" id="username"
+                                       placeholder="Email"
+                                       value="${user.username}">
+                            </label>
+                        </p>
+
+                        <p>
+                            <label class="container-fluid col-6" for="password">
+                                <strong>Password</strong>
+                                <input class="form-control password" type="password"
+                                       name="password" id="password"
+                                       placeholder="Password"
+                                       value="${user.password}">
+                            </label>
+                        </p>
+
+                        <label class="container-fluid col-6"
+                               for="my_roles">
+                            <strong>Role</strong>
+                            <select id="my_roles" class="form-select"
+                                    name="roles" multiple size="2">
+                            </select>
+                        </label>
+                        <p>
+                            <button type="submit" id="newUserButton" class="btn btn-success">Add new user
+                            </button>
+                        </p>
+           `
+        console.log(columnElement)
+        newUserButton.innerHTML = columnElement
     })
