@@ -6,6 +6,7 @@ const newUserButton = document.getElementById('newUserButton')
 
 const url = 'http://localhost:8080/users'
 const urlForOne = 'http://localhost:8080/users/1'
+const urlDelete = 'http://localhost:8080/users/1'
 
 // $('#tableUser').empty()
 fetch(url)
@@ -223,3 +224,15 @@ fetch(urlForOne)
         console.log(columnElement)
         newUserButton.innerHTML = columnElement
     })
+
+
+
+
+// function deleteUser() {
+//     fetch(urlDelete, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+// }
