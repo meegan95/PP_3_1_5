@@ -65,16 +65,12 @@ fetch(url)
         })
         tableOneUser.innerHTML = columnElement
     })
-
+let userN = document.getElementById('user2')
 // Модеальное окно EDIT
 fetch(urlForOne)
     .then(response => response.json())
     .then(user => {
-        let columnElement =
-
-
-            `
-        
+        let columnElement = `
                    <input type="hidden" value="${user.id}" name="id">
 
                     <p class="h6">First name</p>
@@ -112,11 +108,9 @@ fetch(urlForOne)
 
                      </select>
            `
-
-
-        console.log(columnElement)
-        modalEditButton.innerHTML = columnElement
-    })
+            console.log(columnElement)
+            modalEditButton.innerHTML = columnElement
+        })
 
 
 fetch(urlForOne)
