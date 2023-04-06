@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,10 +15,13 @@
   <div class="row bg-dark bg-gradient m-0 p-2">
     <div class="col-11 p-2">
                 <span class="text-white h5">
-                    <th:block class="font-weight-normal"
-                              th:text="username + ', with roles: '+ role">
-                        text
-                    </th:block>
+<!--                    <th:block class="font-weight-normal"-->
+<!--                              th:text="username + ', with roles: '+ role">-->
+<!--                        text-->
+<!--                    </th:block>-->
+                                       <a class="text-white" id="currentUserLogin" sec:authorize="isAuthenticated()" sec:authentication="principal.username">TEST</a>
+                    <a>  with roles:</a>
+                    <a id="currentUserRoles" sec:authorize="isAuthenticated()" sec:authentication="principal.authorities"></a>
                 </span>
     </div>
     <div class="col-1 text-white h4">
