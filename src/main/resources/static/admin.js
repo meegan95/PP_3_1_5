@@ -10,13 +10,14 @@ const urlForOne = 'http://localhost:8080/users/1'
 const urlDelete = 'http://localhost:8080/users/1'
 
 // $('#tableUser').empty()
+// Таблица всех пользователей
 fetch(url)
     .then(response => response.json())
     .then(data => {
         let columnElement = ''
         data.forEach(userFromRequest => {
             columnElement += `<tr>
-              <td>${userFromRequest.id}</td>
+              <td id="user${userFromRequest.id}">${userFromRequest.id}</td>
               <td>${userFromRequest.firstName}</td>
               <td>${userFromRequest.lastName}</td>
               <td>${userFromRequest.age}</td>
@@ -44,7 +45,7 @@ fetch(url)
     })
 // .catch(error => console.error(error))
 
-
+// заполнение авторизованного юзера
 fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -65,11 +66,14 @@ fetch(url)
         tableOneUser.innerHTML = columnElement
     })
 
-
+// Модеальное окно EDIT
 fetch(urlForOne)
     .then(response => response.json())
     .then(user => {
-        let columnElement = `
+        let columnElement =
+
+
+            `
         
                    <input type="hidden" value="${user.id}" name="id">
 
@@ -108,6 +112,8 @@ fetch(urlForOne)
 
                      </select>
            `
+
+
         console.log(columnElement)
         modalEditButton.innerHTML = columnElement
     })
