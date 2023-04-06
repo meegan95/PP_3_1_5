@@ -25,16 +25,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/users/**").permitAll() // Добавил чтобы работал POSTMAN
-//                .antMatchers("/index").hasRole("ROLE_ADMIN") // Добавил для тестов без контроллера
-                .antMatchers("/admin/**").hasRole("ROLE_ADMIN") // Скрыл для тестов без контроллера
-//                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER") // Открыл для тестов без контроллера /// Скрыл чтобы работал POSTMAN
-                .and()
+//                .authorizeRequests()
+//                .antMatchers("/users/**").permitAll() // Добавил чтобы работал POSTMAN
+////                .antMatchers("/index").hasRole("ROLE_ADMIN") // Добавил для тестов без контроллера
+//                .antMatchers("/admin/**").hasRole("ROLE_ADMIN") // Скрыл для тестов без контроллера
+////                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER") // Открыл для тестов без контроллера /// Скрыл чтобы работал POSTMAN
+//                .and()
                 .csrf().disable() // Добавил чтобы работал POSTMAN
                 .formLogin()
                 .loginProcessingUrl("/process_login")
-                .successHandler(successUserHandler)
+//                .successHandler(successUserHandler)
                 .failureUrl("/auth/login?error")
                 .and().logout().logoutUrl("/logout");
     }
