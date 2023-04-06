@@ -27,8 +27,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/users/**").permitAll() // Добавил чтобы работал POSTMAN
-                .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
-//                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER") /// Скрыл чтобы работал POSTMAN
+//                .antMatchers("/index").hasRole("ROLE_ADMIN") // Добавил для тестов без контроллера
+                .antMatchers("/admin/**").hasRole("ROLE_ADMIN") // Скрыл для тестов без контроллера
+//                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER") // Открыл для тестов без контроллера /// Скрыл чтобы работал POSTMAN
                 .and()
                 .csrf().disable() // Добавил чтобы работал POSTMAN
                 .formLogin()
