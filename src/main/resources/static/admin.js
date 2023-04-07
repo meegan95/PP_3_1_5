@@ -1,16 +1,15 @@
 const tableUser = document.getElementById('tableAllUsers')
 const tableOneUser = document.getElementById('tableOneUser')
-const modalEditButton = document.getElementById('modalEditButton')
 const modalDeleteButton = document.getElementById('modalDeleteButton')
 const newUserButton = document.getElementById('newUserButton')
 const currentUserLogin = document.getElementById('currentUserLogin')
 
-const url = 'http://localhost:8080/users'
+const url = 'http://localhost:8080/users/'
 const urlForOne = 'http://localhost:8080/users/1'
-const urlDelete = 'http://localhost:8080/users/1'
 
-// $('#tableUser').empty()
-// Таблица всех пользователей
+
+
+// Таблица всех пользователей // работает
 fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -39,13 +38,12 @@ fetch(url)
                     </td>
             </tr>
            `
-            console.log(columnElement)
         })
         tableUser.innerHTML = columnElement
     })
 // .catch(error => console.error(error))
 
-// заполнение авторизованного юзера
+// заполнение авторизованного юзера //работает
 fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -61,63 +59,38 @@ fetch(url)
               <td>${userFromRequest.role.map(role => role.name.substring(5))}</td>
             </tr>
            `
-            console.log(columnElement)
         })
         tableOneUser.innerHTML = columnElement
     })
-let userN = document.getElementById('user2')
-// Модеальное окно EDIT
-fetch(urlForOne)
-    .then(response => response.json())
-    .then(user => {
-        let columnElement = `
-                   <input type="hidden" value="${user.id}" name="id">
 
-                    <p class="h6">First name</p>
-                   <input type="text" class=" mb-2 form-control" required
-                        name="firstName"
-                       value="${user.firstName}">
 
-                    <p class="h6">Last name</p>
-                    <input type="text" class="  mb-2 form-control" required
-                          name="lastName"
-                        value="${user.lastName}">
+//заполнение формы редактирования юзера - не работает
+$('#modalEdit').off().on('show.bs.modal', event => {
+    let id = $(event.relatedTarget).attr("data-index")
+    fillUserForm(id, document.forms['editUserModalForm'], 'PATCH')
+    document.getElementById('updateUser').addEventListener('click',null)
 
-                           <p class="h6">Age</p>
-                   <input type="number" class="mb-2 form-control" required
-                   name="age"
-                    value="${user.age}">
+})
 
-                    <p class="h6 ">Email</p>
-                     <input type="email" class=" mb-2 form-control" required
-                     name="username"
-                     value="${user.username}">
-
-                     <p class="h6 ">Password</p>
-                     <input type="password" class=" mb-2 form-control"
-                     required
-                     name="password"
-                     value="${user.password}">
-
-                     <select id="editUserRoles" class="form-select" required
-                      name="roles" multiple size="2">
-                      <option
-                      value="${user.role.map(role => role.id)}"
-                      th:text="${user.role.map(role => role.name.substring(5))}" selected>
-                     </option>
-
-                     </select>
-           `
-            console.log(columnElement)
-            modalEditButton.innerHTML = columnElement
+// Модальное окно EDIT - не работает
+function fillUserForm(id ,form , method) {
+    fetch(url + id)
+        .then(response => response.json())
+        .then(data => {
+            form.id.value = data.id
+            form.name.value = data.firstName
+            form.lastName.value = data.lastName
+            form.username.value = data.username
+            form.age.value = data.age
         })
+}
 
 
+// Модальное окно DELETE - не работает
 fetch(urlForOne)
     .then(response => response.json())
     .then(user => {
         let columnElement = `
-        
                    <input type="hidden" value="${user.id}" name="id">
 
                     <p class="h6">First name</p>
@@ -159,7 +132,7 @@ fetch(urlForOne)
         modalDeleteButton.innerHTML = columnElement
     })
 
-
+// Новый пользователь - не работает
 fetch(urlForOne)
     .then(response => response.json())
     .then(user => {

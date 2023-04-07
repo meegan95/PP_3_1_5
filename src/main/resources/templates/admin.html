@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,18 +16,20 @@
         <div class="col-11 p-2">
                 <span class="text-white h5">
 <!--                    <th:block class="font-weight-normal"-->
-<!--                                                  th:text="'username' + ', with roles: '+ 'role'">-->
-<!--                                            text-->
-<!--                                        </th:block>-->
-                     <a class="text-white" id="currentUserLogin" sec:authorize="isAuthenticated()" sec:authentication="principal.username">TEST</a>
+                    <!--                                                  th:text="'username' + ', with roles: '+ 'role'">-->
+                    <!--                                            text-->
+                    <!--                                        </th:block>-->
+                     <a class="text-white" id="currentUserLogin" sec:authorize="isAuthenticated()"
+                        sec:authentication="principal.username">TEST</a>
                     <a>  with roles:</a>
-                    <a id="currentUserRoles" sec:authorize="isAuthenticated()" sec:authentication="principal.authorities"></a>
+                    <a id="currentUserRoles" sec:authorize="isAuthenticated()"
+                       sec:authentication="principal.authorities"></a>
                 </span>
         </div>
         <div class="col-1 text-white h4">
-                        <form th:action="@{/logout}" method="post">
-                            <input class="btn btn-outline-secondary" type="submit" value="Logout"/>
-                        </form>
+            <form th:action="@{/logout}" method="post">
+                <input class="btn btn-outline-secondary" type="submit" value="Logout"/>
+            </form>
         </div>
     </div>
 </div>
@@ -94,33 +97,101 @@
 
 
                                 <!--Modal EDIT starts-->
-                                <div class="modal fade" id="modalEdit"
+                                <div id="modalEdit" class="modal fade" role="dialog"
                                      data-bs-backdrop="static"
-                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                     data-bs-keyboard="false"
+                                     aria-labelledby="staticBackdropLabel"
                                      aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5">Edit user</h1>
+                                                <h5 class="modal-title" id="staticBackdropLabel">Edit user</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form id="editForm"
-                                                      class="container-fluid mb-2 "
-                                                      method="post">
-                                                    <div id="modalEditButton" class="d-grid gap-2 col-6 mx-auto text-center">
+                                                <form id="editUserModalForm" name="editUserModalForm">
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
 
+                                                            <strong>ID</strong>
+                                                            <br>
+                                                            <input type="text" disabled class="form-control" name="id">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Enter name: </strong>
+                                                            <br>
+                                                            <input type="text" id="name" name="firstName"
+                                                                   placeholder="Enter name"
+                                                                   class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Enter Surname: </strong>
+                                                            <br>
+                                                            <input type="text" id="lastName" name="lastName"
+                                                                   placeholder="Enter lastname"
+                                                                   class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Enter age: </strong>
+                                                            <br>
+                                                            <input type="number"  id="age" name="age"
+                                                                   placeholder="Enter age"
+                                                                   class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Enter email:</strong>
+                                                            <br>
+                                                            <input type="text" id="username" name="username"
+                                                                   placeholder="Enter email"
+                                                                   class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Enter new password:</strong>
+                                                            <br>
+                                                            <input type="text" name="password" id="password"
+                                                                   placeholder="Enter your new password"
+                                                                   required
+                                                                   autofocus class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+
+                                                            <strong>Select Role</strong>
+                                                            <br>
+                                                            <select multiple="multiple"  size="2" name="roles"
+                                                                    id="rolesEdit" class="form-control">
+
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">
+                                                        data-bs-dismiss="modal" id="closeEditModalWindow">
                                                     Close
                                                 </button>
-                                                <input type="submit" value="Edit" class="btn btn-primary"
-                                                >
+                                                <button type="submit" class="btn btn-primary" id="updateUser">
+                                                    Update
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -141,7 +212,8 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form class="container-fluid mb-2 ">
-                                                    <div id="modalDeleteButton" class="d-grid gap-2 col-6 mx-auto text-center">
+                                                    <div id="modalDeleteButton"
+                                                         class="d-grid gap-2 col-6 mx-auto text-center">
 
 
                                                     </div>
@@ -173,71 +245,71 @@
             <h5 class="card-header">Add new user</h5>
             <div class="card-body text-center">
                 <div id="newUserButton" class="form-justify-content-center mx-auto col-4">
-<!--                    <form id="formNewUser" name="formNewUser"-->
-<!--                          method="POST">-->
-<!--                        <p>-->
-<!--                            <label class="container-fluid col-6" for="firstName">-->
-<!--                                <strong>First Name</strong>-->
-<!--                                <input class="form-control" type="text"-->
-<!--                                       name="firstName" id="firstName"-->
-<!--                                       placeholder="First name">-->
-<!--                            </label>-->
-<!--                        </p>-->
+                    <!--                    <form id="formNewUser" name="formNewUser"-->
+                    <!--                          method="POST">-->
+                    <!--                        <p>-->
+                    <!--                            <label class="container-fluid col-6" for="firstName">-->
+                    <!--                                <strong>First Name</strong>-->
+                    <!--                                <input class="form-control" type="text"-->
+                    <!--                                       name="firstName" id="firstName"-->
+                    <!--                                       placeholder="First name">-->
+                    <!--                            </label>-->
+                    <!--                        </p>-->
 
-<!--                        <p>-->
-<!--                            <label class="container-fluid col-6" for="lastName">-->
-<!--                                <strong>Last Name</strong>-->
-<!--                                <input class="form-control" type="text"-->
-<!--                                       name="name" id="lastName"-->
-<!--                                       placeholder="Last name">-->
-<!--                            </label>-->
-<!--                        </p>-->
+                    <!--                        <p>-->
+                    <!--                            <label class="container-fluid col-6" for="lastName">-->
+                    <!--                                <strong>Last Name</strong>-->
+                    <!--                                <input class="form-control" type="text"-->
+                    <!--                                       name="name" id="lastName"-->
+                    <!--                                       placeholder="Last name">-->
+                    <!--                            </label>-->
+                    <!--                        </p>-->
 
-<!--                        <p>-->
-<!--                            <label class="container-fluid col-6" for="age">-->
-<!--                                <strong>Age</strong>-->
-<!--                                <input class="form-control" type="text"-->
-<!--                                       name="name" id="age"-->
-<!--                                       placeholder="Age">-->
-<!--                            </label>-->
-<!--                        </p>-->
+                    <!--                        <p>-->
+                    <!--                            <label class="container-fluid col-6" for="age">-->
+                    <!--                                <strong>Age</strong>-->
+                    <!--                                <input class="form-control" type="text"-->
+                    <!--                                       name="name" id="age"-->
+                    <!--                                       placeholder="Age">-->
+                    <!--                            </label>-->
+                    <!--                        </p>-->
 
-<!--                        <p>-->
-<!--                            <label class="container-fluid col-6" for="username">-->
-<!--                                <strong>Email</strong>-->
-<!--                                <input class="form-control" type="email"-->
-<!--                                       name="username" id="username"-->
-<!--                                       placeholder="Email"-->
-<!--                                >-->
-<!--                            </label>-->
-<!--                        </p>-->
+                    <!--                        <p>-->
+                    <!--                            <label class="container-fluid col-6" for="username">-->
+                    <!--                                <strong>Email</strong>-->
+                    <!--                                <input class="form-control" type="email"-->
+                    <!--                                       name="username" id="username"-->
+                    <!--                                       placeholder="Email"-->
+                    <!--                                >-->
+                    <!--                            </label>-->
+                    <!--                        </p>-->
 
-<!--                        <p>-->
-<!--                            <label class="container-fluid col-6" for="password">-->
-<!--                                <strong>Password</strong>-->
-<!--                                <input class="form-control password" type="password"-->
-<!--                                       name="password" id="password"-->
-<!--                                       placeholder="Password">-->
-<!--                            </label>-->
-<!--                        </p>-->
+                    <!--                        <p>-->
+                    <!--                            <label class="container-fluid col-6" for="password">-->
+                    <!--                                <strong>Password</strong>-->
+                    <!--                                <input class="form-control password" type="password"-->
+                    <!--                                       name="password" id="password"-->
+                    <!--                                       placeholder="Password">-->
+                    <!--                            </label>-->
+                    <!--                        </p>-->
 
-<!--                        <label class="container-fluid col-6"-->
-<!--                               for="my_roles">-->
-<!--                            <strong>Role</strong>-->
-<!--                            <select id="my_roles" class="form-select"-->
-<!--                                    name="roles" multiple size="2">-->
-<!--                                &lt;!&ndash;                                <option th:each="role: ${allRoles}" th:value="${role.getId()}">&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                    <th:block th:text="${role.getRoleName()}">&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                    </th:block>&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                </option>&ndash;&gt;-->
-<!--                            </select>-->
-<!--                        </label>-->
-<!--                        <p>-->
-<!--                            <button type="submit" id="newUserButton" class="btn btn-success">Add new user-->
-<!--                            </button>-->
-<!--                        </p>-->
+                    <!--                        <label class="container-fluid col-6"-->
+                    <!--                               for="my_roles">-->
+                    <!--                            <strong>Role</strong>-->
+                    <!--                            <select id="my_roles" class="form-select"-->
+                    <!--                                    name="roles" multiple size="2">-->
+                    <!--                                &lt;!&ndash;                                <option th:each="role: ${allRoles}" th:value="${role.getId()}">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    <th:block th:text="${role.getRoleName()}">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    </th:block>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                </option>&ndash;&gt;-->
+                    <!--                            </select>-->
+                    <!--                        </label>-->
+                    <!--                        <p>-->
+                    <!--                            <button type="submit" id="newUserButton" class="btn btn-success">Add new user-->
+                    <!--                            </button>-->
+                    <!--                        </p>-->
 
-<!--                    </form>-->
+                    <!--                    </form>-->
                 </div>
             </div>
 
