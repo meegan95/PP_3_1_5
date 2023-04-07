@@ -5,6 +5,7 @@ const newUserButton = document.getElementById('newUserButton')
 const currentUserLogin = document.getElementById('currentUserLogin')
 
 const url = 'http://localhost:8080/users/'
+const urlRoles = 'http://localhost:8080/users/roles'
 const urlForOne = 'http://localhost:8080/users/1'
 
 
@@ -67,14 +68,14 @@ fetch(url)
 // modal EDIT - заполняется
 $('#modalEdit').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
-    fillUserForm(id, document.forms['editUserModalForm'], 'PATCH')
+    fillUserForm(id, document.forms['editUserModalForm'], 'Patch')
     document.getElementById('updateUser').addEventListener('click',null)
 
 })
-
+// modal DELETE - заполняется
 $('#modalDelete').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
-    fillUserForm(id, document.forms['modalDeleteForm'], 'PATCH')
+    fillUserForm(id, document.forms['modalDeleteForm'], 'Delete')
     document.getElementById('updateUser').addEventListener('click',null)
 
 })
@@ -89,8 +90,28 @@ function fillUserForm(id ,form , method) {
             form.lastName.value = data.lastName
             form.username.value = data.username
             form.age.value = data.age
+
+            // TODO Роли - выделить текущую
+            fetch(urlRoles)
+                .then(response => response.json())
+                .then(data => {
+                    let rolesToEdit = document.getElementById('roles' + method)
+                    let columnElement = ''
+                    data.forEach(element => {
+                        columnElement += `
+                                <option value='${element.id}' selected>
+                    ${element.name.substring(5)}
+                    </option>
+           `
+                    })
+                    rolesToEdit.innerHTML = columnElement
+                })
+
         })
 }
+
+
+
 
 
 // Новый пользователь - некорректно
