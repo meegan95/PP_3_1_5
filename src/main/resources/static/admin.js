@@ -45,13 +45,15 @@ fetch(url)
 // .catch(error => console.error(error))
 
 // заполнение авторизованного юзера //работает
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        let columnElement = ''
-        data.forEach(userFromRequest => {
-            if (userFromRequest.username === currentUserLogin.innerText)
-                columnElement += `<tr>
+fillUsersTable()
+function fillUsersTable() {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let columnElement = ''
+            data.forEach(userFromRequest => {
+                if (userFromRequest.username === currentUserLogin.innerText)
+                    columnElement += `<tr>
               <td>${userFromRequest.id}</td>
               <td>${userFromRequest.firstName}</td>
               <td>${userFromRequest.lastName}</td>
@@ -60,10 +62,10 @@ fetch(url)
               <td>${userFromRequest.role.map(role => role.name.substring(5))}</td>
             </tr>
            `
+            })
+            tableOneUser.innerHTML = columnElement
         })
-        tableOneUser.innerHTML = columnElement
-    })
-
+}
 
 // modal EDIT - заполняется
 $('#modalEdit').off().on('show.bs.modal', event => {
@@ -76,7 +78,9 @@ $('#modalEdit').off().on('show.bs.modal', event => {
 $('#modalDelete').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
     fillUserForm(id, document.forms['modalDeleteForm'], 'Delete')
-    document.getElementById('updateUser').addEventListener('click',null)
+    document.getElementById('deleteUser').addEventListener('click',(event) => {
+        deleteCurrentUser(id)
+    })
 
 })
 
@@ -86,31 +90,46 @@ function fillUserForm(id ,form , method) {
         .then(response => response.json())
         .then(data => {
             form.id.value = data.id
-            form.name.value = data.firstName
+            form.firstName.value = data.firstName
             form.lastName.value = data.lastName
             form.username.value = data.username
             form.age.value = data.age
+            userSelectRole(data.role)
+            function userSelectRole(role) {
 
-            // TODO Роли - выделить текущую
-            fetch(urlRoles)
-                .then(response => response.json())
-                .then(data => {
-                    let rolesToEdit = document.getElementById('roles' + method)
-                    let columnElement = ''
-                    data.forEach(element => {
-                        columnElement += `
-                                <option value='${element.id}' selected>
+                // TODO Роли - выделить текущую
+                fetch(urlRoles)
+                    .then(response => response.json())
+                    .then(data => {
+                        let rolesToEdit = document.getElementById('roles' + method)
+                        let columnElement = ''
+                        data.forEach(element => {
+                                columnElement += `
+                                <option value='${element.id}'>
                     ${element.name.substring(5)}
-                    </option>
-           `
+                    </option> `
+                        })
+                        rolesToEdit.innerHTML = columnElement
                     })
-                    rolesToEdit.innerHTML = columnElement
-                })
+            }
 
         })
 }
-
-
+// кнопка DELETE - не работает
+function deleteCurrentUser(id) {
+    fetch(url + id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(() => {
+        // fillUsersTable()
+        document.getElementById('closeDeleteModal').click()
+        // getSuccessMessage('User has been deleted!')
+        fillUsersTable()
+        $('.nav-tabs a[href="#table"]').tab('show')
+    })
+}
 
 
 
