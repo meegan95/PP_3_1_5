@@ -11,12 +11,14 @@ const urlForOne = 'http://localhost:8080/users/1'
 
 
 // Таблица всех пользователей // работает
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        let columnElement = ''
-        data.forEach(userFromRequest => {
-            columnElement += `<tr>
+fillUsersTable()
+function fillUsersTable() {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let columnElement = ''
+            data.forEach(userFromRequest => {
+                columnElement += `<tr>
               <td id="user${userFromRequest.id}">${userFromRequest.id}</td>
               <td>${userFromRequest.firstName}</td>
               <td>${userFromRequest.lastName}</td>
@@ -39,14 +41,13 @@ fetch(url)
                     </td>
             </tr>
            `
+            })
+            tableUser.innerHTML = columnElement
         })
-        tableUser.innerHTML = columnElement
-    })
+}
 // .catch(error => console.error(error))
 
 // заполнение авторизованного юзера //работает
-fillUsersTable()
-function fillUsersTable() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -65,7 +66,7 @@ function fillUsersTable() {
             })
             tableOneUser.innerHTML = columnElement
         })
-}
+
 
 // modal EDIT - заполняется
 $('#modalEdit').off().on('show.bs.modal', event => {
@@ -115,7 +116,7 @@ function fillUserForm(id ,form , method) {
 
         })
 }
-// кнопка DELETE - не работает
+// кнопка DELETE - работает
 function deleteCurrentUser(id) {
     fetch(url + id, {
         method: 'DELETE',
@@ -123,10 +124,9 @@ function deleteCurrentUser(id) {
             'Content-Type': 'application/json'
         }
     }).then(() => {
-        // fillUsersTable()
+        fillUsersTable()
         document.getElementById('closeDeleteModal').click()
         // getSuccessMessage('User has been deleted!')
-        fillUsersTable()
         $('.nav-tabs a[href="#table"]').tab('show')
     })
 }
@@ -203,15 +203,3 @@ fetch(urlForOne)
         console.log(columnElement)
         newUserButton.innerHTML = columnElement
     })
-
-
-
-
-// function deleteUser() {
-//     fetch(urlDelete, {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     })
-// }
