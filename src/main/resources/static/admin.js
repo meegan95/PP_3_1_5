@@ -1,6 +1,5 @@
 const tableUser = document.getElementById('tableAllUsers')
 const tableOneUser = document.getElementById('tableOneUser')
-const modalDeleteButton = document.getElementById('modalDeleteButton')
 const newUserButton = document.getElementById('newUserButton')
 const currentUserLogin = document.getElementById('currentUserLogin')
 
@@ -131,9 +130,20 @@ function deleteCurrentUser(id) {
     })
 }
 
-// кнопка EDIT - не работет
+// кнопка EDIT - работет
 function editCurrentUser(id){
     let userEditForm = document.forms['editUserModalForm']
+    console.log(userEditForm.roles)
+    let editUserRoles = []
+    for (let option of document.getElementById('rolesPatch').options) {
+        if (option.selected) {
+            editUserRoles.push({
+                id: option.value,
+                name: 'ROLE_' + option.innerText
+            })
+        }
+    }
+
     fetch(url + id, {
         method: 'PATCH',
         headers: {
@@ -146,7 +156,7 @@ function editCurrentUser(id){
             username: userEditForm.username.value,
             age: userEditForm.age.value,
             password: userEditForm.password.value,
-            // roles: editUserRoles
+            roles: editUserRoles
         })
     }).then((response) =>{
         fillUsersTable()
@@ -227,6 +237,5 @@ fetch(urlForOne)
                             </button>
                         </p>
            `
-        console.log(columnElement)
         newUserButton.innerHTML = columnElement
     })
