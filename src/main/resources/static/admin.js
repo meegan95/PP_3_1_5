@@ -72,7 +72,7 @@ function fillUsersTable() {
 $('#modalEdit').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
     fillUserForm(id, document.forms['editUserModalForm'], 'Patch')
-    document.getElementById('updateUser').addEventListener('click',null)
+    document.getElementById('updateUser').addEventListener('click',(event) => {editCurrentUser(id)})
 
 })
 // modal DELETE - заполняется
@@ -130,6 +130,33 @@ function deleteCurrentUser(id) {
         $('.nav-tabs a[href="#table"]').tab('show')
     })
 }
+
+// кнопка EDIT - не работет
+function editCurrentUser(id){
+    let userEditForm = document.forms['editUserModalForm']
+    fetch(url + id, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: userEditForm.id.value,
+            firstName: userEditForm.firstName.value,
+            lastName: userEditForm.lastName.value,
+            username: userEditForm.username.value,
+            age: userEditForm.age.value,
+            password: userEditForm.password.value,
+            // roles: editUserRoles
+        })
+    }).then((response) =>{
+        fillUsersTable()
+        // userEditForm.password.value = ''
+        document.getElementById('closeEditModalWindow').click()
+        // getSuccessMessage('User has been updated!')
+        $('.nav-tabs a[href="#table"]').tab('show')
+    })
+}
+
 
 
 
