@@ -1,11 +1,9 @@
 const tableUser = document.getElementById('tableAllUsers')
 const tableOneUser = document.getElementById('tableOneUser')
-const newUserButton = document.getElementById('newUserButton')
 const currentUserLogin = document.getElementById('currentUserLogin')
 
 const url = 'http://localhost:8080/users/'
 const urlRoles = 'http://localhost:8080/users/roles'
-const urlForOne = 'http://localhost:8080/users/1'
 
 
 
@@ -83,6 +81,40 @@ $('#modalDelete').off().on('show.bs.modal', event => {
     })
 
 })
+
+// tab NEW USER
+$('.nav-tabs a[href="#newUser"]').on('show.bs.tab', () => {
+    getRoles()
+    document.getElementById('newUserButton2').addEventListener('click', newUser)
+})
+
+// Все роли
+function getRoles() {
+    const rolesNew = document.getElementById('rolesNew')
+    fetch(urlRoles)
+        .then(response => response.json())
+        .then(data => {
+            let resRoles = ''
+            data.forEach(element => {
+                if (element.id === 2) {
+                    resRoles +=
+                        `
+                    <option value='${element.id}' selected>
+                    ${element.name}
+                    </option>
+                    `
+                } else {
+                    resRoles +=
+                        `
+                    <option value='${element.id}' >
+                    ${element.name}
+                    </option>
+                    `
+                }
+            })
+            rolesNew.innerHTML = resRoles
+        })
+}
 
 // заполнение форм modal EDIT, DELETE
 function fillUserForm(id ,form , method) {
@@ -170,72 +202,36 @@ function editCurrentUser(id){
 
 
 
-// Новый пользователь - некорректно
-fetch(urlForOne)
-    .then(response => response.json())
-    .then(user => {
-        let columnElement = `
-                     <p>
-                            <label class="container-fluid col-6" for="firstName">
-                                <strong>First Name</strong>
-                                <input class="form-control" type="text"
-                                       name="firstName" id="firstName"
-                                       placeholder="First name"
-                                       value="${user.firstName}">
-                            </label>
-                        </p>
-
-                        <p>
-                            <label class="container-fluid col-6" for="lastName">
-                                <strong>Last Name</strong>
-                                <input class="form-control" type="text"
-                                       name="name" id="lastName"
-                                       placeholder="Last name"
-                                       value="${user.lastName}">
-                            </label>
-                        </p>
-
-                        <p>
-                            <label class="container-fluid col-6" for="age">
-                                <strong>Age</strong>
-                                <input class="form-control" type="text"
-                                       name="name" id="age"
-                                       placeholder="Age"
-                                       value="${user.age}">
-                            </label>
-                        </p>
-
-                        <p>
-                            <label class="container-fluid col-6" for="username">
-                                <strong>Email</strong>
-                                <input class="form-control" type="email"
-                                       name="username" id="username"
-                                       placeholder="Email"
-                                       value="${user.username}">
-                            </label>
-                        </p>
-
-                        <p>
-                            <label class="container-fluid col-6" for="password">
-                                <strong>Password</strong>
-                                <input class="form-control password" type="password"
-                                       name="password" id="password"
-                                       placeholder="Password"
-                                       value="${user.password}">
-                            </label>
-                        </p>
-
-                        <label class="container-fluid col-6"
-                               for="my_roles">
-                            <strong>Role</strong>
-                            <select id="my_roles" class="form-select"
-                                    name="roles" multiple size="2">
-                            </select>
-                        </label>
-                        <p>
-                            <button type="submit" id="newUserButton" class="btn btn-success">Add new user
-                            </button>
-                        </p>
-           `
-        newUserButton.innerHTML = columnElement
-    })
+// Новый пользователь -
+function newUser(e){
+    e.preventDefault()
+    const formNewUser = document.forms['formNewUser']
+    let newUserRoles = []
+    for (let option of document.getElementById('rolesNew').options) {
+        if (option.selected) {
+            newUserRoles.push({
+                id: option.value,
+                name: 'ROLE_' + option.innerText
+            })
+        }
+    }
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: formNewUser.username.value,
+            age: formNewUser.age.value,
+            password: formNewUser.password.value,
+            firstName: formNewUser.firstName.value,
+            lastName: formNewUser.lastName.value,
+            // roles: newUserRoles
+        })
+    }).then((response) => {
+                formNewUser.reset()
+                fillUsersTable()
+                $('.nav-tabs a[href="#table"]').tab('show')
+        }
+    )
+}

@@ -60,7 +60,7 @@
                                aria-controls="table" aria-selected="true">Users table</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="new-tab" data-bs-toggle="tab" href="#new" role="tab"
+                            <a class="nav-link" id="new-tab" data-bs-toggle="tab" href="#newUser" role="tab"
                                aria-controls="new" aria-selected="false">New User</a>
                         </li>
                     </ul>
@@ -314,76 +314,76 @@
             </div>
         </div>
         <!--New user starts/-->
-        <div class="tab-pane fade" id="new" role="tabpanel"
+        <div class="tab-pane fade" id="newUser" role="tabpanel"
              aria-labelledby="new-tab">
             <h5 class="card-header">Add new user</h5>
             <div class="card-body text-center">
                 <div id="newUserButton" class="form-justify-content-center mx-auto col-4">
-                    <!--                    <form id="formNewUser" name="formNewUser"-->
-                    <!--                          method="POST">-->
-                    <!--                        <p>-->
-                    <!--                            <label class="container-fluid col-6" for="firstName">-->
-                    <!--                                <strong>First Name</strong>-->
-                    <!--                                <input class="form-control" type="text"-->
-                    <!--                                       name="firstName" id="firstName"-->
-                    <!--                                       placeholder="First name">-->
-                    <!--                            </label>-->
-                    <!--                        </p>-->
+                                        <form id="formNewUser" name="formNewUser"
+                                              method="POST">
+                                            <p>
+                                                <label class="container-fluid col-6" for="firstName">
+                                                    <strong>First Name</strong>
+                                                    <input class="form-control" type="text"
+                                                           name="firstName" id="firstName2"
+                                                           placeholder="First name">
+                                                </label>
+                                            </p>
 
-                    <!--                        <p>-->
-                    <!--                            <label class="container-fluid col-6" for="lastName">-->
-                    <!--                                <strong>Last Name</strong>-->
-                    <!--                                <input class="form-control" type="text"-->
-                    <!--                                       name="name" id="lastName"-->
-                    <!--                                       placeholder="Last name">-->
-                    <!--                            </label>-->
-                    <!--                        </p>-->
+                                            <p>
+                                                <label class="container-fluid col-6" for="lastName">
+                                                    <strong>Last Name</strong>
+                                                    <input class="form-control" type="text"
+                                                           name="lastName" id="lastName2"
+                                                           placeholder="Last name">
+                                                </label>
+                                            </p>
 
-                    <!--                        <p>-->
-                    <!--                            <label class="container-fluid col-6" for="age">-->
-                    <!--                                <strong>Age</strong>-->
-                    <!--                                <input class="form-control" type="text"-->
-                    <!--                                       name="name" id="age"-->
-                    <!--                                       placeholder="Age">-->
-                    <!--                            </label>-->
-                    <!--                        </p>-->
+                                            <p>
+                                                <label class="container-fluid col-6" for="age">
+                                                    <strong>Age</strong>
+                                                    <input class="form-control" type="text"
+                                                           name="age" id="age2"
+                                                           placeholder="Age">
+                                                </label>
+                                            </p>
 
-                    <!--                        <p>-->
-                    <!--                            <label class="container-fluid col-6" for="username">-->
-                    <!--                                <strong>Email</strong>-->
-                    <!--                                <input class="form-control" type="email"-->
-                    <!--                                       name="username" id="username"-->
-                    <!--                                       placeholder="Email"-->
-                    <!--                                >-->
-                    <!--                            </label>-->
-                    <!--                        </p>-->
+                                            <p>
+                                                <label class="container-fluid col-6" for="username">
+                                                    <strong>Email</strong>
+                                                    <input class="form-control" type="email"
+                                                           name="username" id="username2"
+                                                           placeholder="Email"
+                                                    >
+                                                </label>
+                                            </p>
 
-                    <!--                        <p>-->
-                    <!--                            <label class="container-fluid col-6" for="password">-->
-                    <!--                                <strong>Password</strong>-->
-                    <!--                                <input class="form-control password" type="password"-->
-                    <!--                                       name="password" id="password"-->
-                    <!--                                       placeholder="Password">-->
-                    <!--                            </label>-->
-                    <!--                        </p>-->
+                                            <p>
+                                                <label class="container-fluid col-6" for="password">
+                                                    <strong>Password</strong>
+                                                    <input class="form-control password" type="password"
+                                                           name="password" id="password2"
+                                                           placeholder="Password">
+                                                </label>
+                                            </p>
 
-                    <!--                        <label class="container-fluid col-6"-->
-                    <!--                               for="my_roles">-->
-                    <!--                            <strong>Role</strong>-->
-                    <!--                            <select id="my_roles" class="form-select"-->
-                    <!--                                    name="roles" multiple size="2">-->
-                    <!--                                &lt;!&ndash;                                <option th:each="role: ${allRoles}" th:value="${role.getId()}">&ndash;&gt;-->
-                    <!--                                &lt;!&ndash;                                    <th:block th:text="${role.getRoleName()}">&ndash;&gt;-->
-                    <!--                                &lt;!&ndash;                                    </th:block>&ndash;&gt;-->
-                    <!--                                &lt;!&ndash;                                </option>&ndash;&gt;-->
-                    <!--                            </select>-->
-                    <!--                        </label>-->
-                    <!--                        <p>-->
-                    <!--                            <button type="submit" id="newUserButton" class="btn btn-success">Add new user-->
-                    <!--                            </button>-->
-                    <!--                        </p>-->
+                                            <label class="container-fluid col-6"
+                                                   for="rolesNew">
+                                                <strong>Role</strong>
+                                                <select id="rolesNew" class="form-select"
+                                                        name="roles" multiple size="2">
+                                                    <!--                                <option th:each="role: ${allRoles}" th:value="${role.getId()}">-->
+                                                    <!--                                    <th:block th:text="${role.getRoleName()}">-->
+                                                    <!--                                    </th:block>-->
+                                                    <!--                                </option>-->
+                                                </select>
+                                            </label>
+                                            <p>
+                                                <button type="submit" id="newUserButton2" class="btn btn-success">Add new user
+                                                </button>
+                                            </p>
 
-                    <!--                    </form>-->
+                                        </form>
                 </div>
             </div>
 
