@@ -125,7 +125,7 @@
                                                             <strong>Enter name: </strong>
                                                             <br>
                                                             <input type="text" id="name" name="firstName"
-                                                                   placeholder="Enter name"
+                                                                   placeholder="Enter firstName"
                                                                    class="form-control"/>
                                                         </div>
                                                     </div>
@@ -201,33 +201,107 @@
                                 <!--Modal DELETE starts-->
                                 <div class="modal fade" id="modalDelete"
                                      data-bs-backdrop="static"
-                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDelete"
                                      aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5">Delete user</h1>
+                                                <div class="form-group text-center">
+                                                    <h5 class="modal-title" id="deleteModal">Delete</h5>
+                                                </div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="container-fluid mb-2 ">
-                                                    <div id="modalDeleteButton"
-                                                         class="d-grid gap-2 col-6 mx-auto text-center">
+                                                <form name="modalDeleteForm" id="modalDeleteForm">
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>ID</strong>
+                                                            <br>
+                                                            <input type="text" name="id" class="form-control" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
 
+                                                            <strong>Name: </strong>
+                                                            <br>
+                                                            <input type="text"
+                                                                   name="firstName" id="firstName1"
+                                                                   placeholder="Enter firstname"
+                                                                   disabled class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Lastname: </strong>
+                                                            <br>
+                                                            <input type="text"
+                                                                   name="lastName" id="lastName1"
+                                                                   placeholder="Enter lastname"
+                                                                   disabled class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
 
+                                                            <strong>Age: </strong>
+                                                            <br>
+                                                            <input type="number"
+                                                                   name="age" id="age1"
+                                                                   placeholder="Enter age"
+                                                                   disabled class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+
+                                                            <strong>Email:</strong>
+                                                            <br>
+                                                            <input type="text"
+                                                                   name="username" id="username1"
+                                                                   placeholder="Enter email"
+                                                                   disabled class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+
+                                                            <strong>Password:</strong>
+                                                            <br>
+                                                            <input type="password" name="password"
+                                                                   id="password1"
+                                                                   placeholder=""
+                                                                   required
+                                                                   autofocus
+                                                                   disabled class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-sm-4 offset-4">
+                                                            <strong>Roles:</strong>
+                                                            <select multiple="multiple" name="roles" size="2"
+                                                                    id="rolesDelete"
+                                                                    disabled class="form-control">
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">
+                                                        data-bs-dismiss="modal" id="closeDeleteModal">
                                                     Close
                                                 </button>
-                                                <form method="dialog"
-                                                >
-                                                    <button class="btn btn-danger" type="submit">Delete</button>
-                                                </form>
+                                                <button type="submit" class="btn btn-danger" id="deleteUser">
+                                                    Delete
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
