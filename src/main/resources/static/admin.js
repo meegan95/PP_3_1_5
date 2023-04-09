@@ -6,7 +6,7 @@ const url = 'http://localhost:8080/users/'
 const urlRoles = 'http://localhost:8080/users/roles'
 
 
-// Таблица всех пользователей // работает
+// Таблица всех пользователей
 fillUsersTable()
 
 function fillUsersTable() {
@@ -43,9 +43,7 @@ function fillUsersTable() {
         })
 }
 
-// .catch(error => console.error(error))
-
-// заполнение авторизованного юзера //работает
+// Заполнение авторизованного пользователя
 fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -66,7 +64,7 @@ fetch(url)
     })
 
 
-// modal EDIT - заполняется
+// modal EDIT
 $('#modalEdit').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
     fillUserForm(id, document.forms['editUserModalForm'], 'Patch')
@@ -75,7 +73,7 @@ $('#modalEdit').off().on('show.bs.modal', event => {
     })
 
 })
-// modal DELETE - заполняется
+// modal DELETE
 $('#modalDelete').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
     fillUserForm(id, document.forms['modalDeleteForm'], 'Delete')
@@ -119,7 +117,7 @@ function getRoles() {
         })
 }
 
-// заполнение форм modal EDIT, DELETE
+// Заполнение форм modal EDIT, DELETE
 function fillUserForm(id, form, method) {
     fetch(url + id)
         .then(response => response.json())
@@ -129,11 +127,11 @@ function fillUserForm(id, form, method) {
             form.lastName.value = data.lastName
             form.username.value = data.username
             form.age.value = data.age
+            form.password.value = data.password
             userSelectRole(data.role)
 
             function userSelectRole(role) {
 
-                // TODO Роли - выделить текущую
                 fetch(urlRoles)
                     .then(response => response.json())
                     .then(data => {
@@ -152,7 +150,7 @@ function fillUserForm(id, form, method) {
         })
 }
 
-// кнопка DELETE - работает
+// Кнопка DELETE
 function deleteCurrentUser(id) {
     fetch(url + id, {
         method: 'DELETE',
@@ -166,7 +164,7 @@ function deleteCurrentUser(id) {
     })
 }
 
-// кнопка EDIT - работет
+// Кнопка EDIT
 function editCurrentUser(id) {
     let userEditForm = document.forms['editUserModalForm']
     console.log(userEditForm.roles)
@@ -179,7 +177,6 @@ function editCurrentUser(id) {
             })
         }
     }
-
     fetch(url + id, {
         method: 'PATCH',
         headers: {
@@ -202,8 +199,7 @@ function editCurrentUser(id) {
 }
 
 
-// Новый пользователь - //TODO работает, но роли множатся
-// TODO валидация
+// Новый пользователь
 function newUser(e) {
     e.preventDefault()
     const formNewUser = document.forms['formNewUser']
