@@ -205,7 +205,7 @@ function editCurrentUser(id) {
 }
 
 
-// Новый пользователь -
+// Новый пользователь - работает, но роли множаться
 function newUser(e) {
     e.preventDefault()
     const formNewUser = document.forms['formNewUser']
@@ -213,11 +213,7 @@ function newUser(e) {
     for (let option of document.getElementById('rolesNew').options) {
         if (option.selected) {
             newUserRoles.push({
-                // id: option.value,
                 name: option.innerText,
-                authority: option.innerText,
-                roleName: option.innerText.substring(5)
-                //        [{"id":2,"name":"ROLE_USER","authority":"ROLE_USER","roleName":"USER "}]
             })
         }
     }
