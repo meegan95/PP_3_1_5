@@ -124,14 +124,14 @@ function getRoles() {
                     resRoles +=
                         `
                     <option value='${element.id}' selected>
-                    ${element.name}
+                    ${element.name.substring(5)}
                     </option>
                     `
                 } else {
                     resRoles +=
                         `
                     <option value='${element.id}' >
-                    ${element.name}
+                    ${element.name.substring(5)}
                     </option>
                     `
                 }
@@ -222,7 +222,7 @@ function editCurrentUser(id) {
 }
 
 
-// Новый пользователь
+// Заполнение формы нового пользователя
 function newUser(e) {
     e.preventDefault()
     const formNewUser = document.forms['formNewUser']
@@ -230,7 +230,7 @@ function newUser(e) {
     for (let option of document.getElementById('rolesNew').options) {
         if (option.selected) {
             newUserRoles.push({
-                name: option.innerText,
+                name: 'ROLE_' + option.innerText
             })
         }
     }
