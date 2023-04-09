@@ -6,9 +6,9 @@ const url = 'http://localhost:8080/users/'
 const urlRoles = 'http://localhost:8080/users/roles'
 
 
-
 // Таблица всех пользователей // работает
 fillUsersTable()
+
 function fillUsersTable() {
     fetch(url)
         .then(response => response.json())
@@ -42,16 +42,17 @@ function fillUsersTable() {
             tableUser.innerHTML = columnElement
         })
 }
+
 // .catch(error => console.error(error))
 
 // заполнение авторизованного юзера //работает
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            let columnElement = ''
-            data.forEach(userFromRequest => {
-                if (userFromRequest.username === currentUserLogin.innerText)
-                    columnElement += `<tr>
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        let columnElement = ''
+        data.forEach(userFromRequest => {
+            if (userFromRequest.username === currentUserLogin.innerText)
+                columnElement += `<tr>
               <td>${userFromRequest.id}</td>
               <td>${userFromRequest.firstName}</td>
               <td>${userFromRequest.lastName}</td>
@@ -60,23 +61,25 @@ function fillUsersTable() {
               <td>${userFromRequest.role.map(role => role.name.substring(5))}</td>
             </tr>
            `
-            })
-            tableOneUser.innerHTML = columnElement
         })
+        tableOneUser.innerHTML = columnElement
+    })
 
 
 // modal EDIT - заполняется
 $('#modalEdit').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
     fillUserForm(id, document.forms['editUserModalForm'], 'Patch')
-    document.getElementById('updateUser').addEventListener('click',(event) => {editCurrentUser(id)})
+    document.getElementById('updateUser').addEventListener('click', (event) => {
+        editCurrentUser(id)
+    })
 
 })
 // modal DELETE - заполняется
 $('#modalDelete').off().on('show.bs.modal', event => {
     let id = $(event.relatedTarget).attr("data-index")
     fillUserForm(id, document.forms['modalDeleteForm'], 'Delete')
-    document.getElementById('deleteUser').addEventListener('click',(event) => {
+    document.getElementById('deleteUser').addEventListener('click', (event) => {
         deleteCurrentUser(id)
     })
 
@@ -117,7 +120,7 @@ function getRoles() {
 }
 
 // заполнение форм modal EDIT, DELETE
-function fillUserForm(id ,form , method) {
+function fillUserForm(id, form, method) {
     fetch(url + id)
         .then(response => response.json())
         .then(data => {
@@ -127,6 +130,7 @@ function fillUserForm(id ,form , method) {
             form.username.value = data.username
             form.age.value = data.age
             userSelectRole(data.role)
+
             function userSelectRole(role) {
 
                 // TODO Роли - выделить текущую
@@ -136,7 +140,7 @@ function fillUserForm(id ,form , method) {
                         let rolesToEdit = document.getElementById('roles' + method)
                         let columnElement = ''
                         data.forEach(element => {
-                                columnElement += `
+                            columnElement += `
                                 <option value='${element.id}'>
                     ${element.name.substring(5)}
                     </option> `
@@ -147,6 +151,7 @@ function fillUserForm(id ,form , method) {
 
         })
 }
+
 // кнопка DELETE - работает
 function deleteCurrentUser(id) {
     fetch(url + id, {
@@ -163,7 +168,7 @@ function deleteCurrentUser(id) {
 }
 
 // кнопка EDIT - работет
-function editCurrentUser(id){
+function editCurrentUser(id) {
     let userEditForm = document.forms['editUserModalForm']
     console.log(userEditForm.roles)
     let editUserRoles = []
@@ -190,7 +195,7 @@ function editCurrentUser(id){
             password: userEditForm.password.value,
             roles: editUserRoles
         })
-    }).then((response) =>{
+    }).then((response) => {
         fillUsersTable()
         // userEditForm.password.value = ''
         document.getElementById('closeEditModalWindow').click()
@@ -200,21 +205,24 @@ function editCurrentUser(id){
 }
 
 
-
-
 // Новый пользователь -
-function newUser(e){
+function newUser(e) {
     e.preventDefault()
     const formNewUser = document.forms['formNewUser']
     let newUserRoles = []
     for (let option of document.getElementById('rolesNew').options) {
         if (option.selected) {
             newUserRoles.push({
-                id: option.value,
-                name: 'ROLE_' + option.innerText
+                // id: option.value,
+                name: option.innerText,
+                authority: option.innerText,
+                roleName: option.innerText.substring(5)
+                //        [{"id":2,"name":"ROLE_USER","authority":"ROLE_USER","roleName":"USER "}]
             })
         }
     }
+
+    console.log(newUserRoles)
     fetch(url, {
         method: 'POST',
         headers: {
@@ -226,12 +234,13 @@ function newUser(e){
             password: formNewUser.password.value,
             firstName: formNewUser.firstName.value,
             lastName: formNewUser.lastName.value,
-            // roles: newUserRoles
+            roles: newUserRoles
         })
     }).then((response) => {
-                formNewUser.reset()
-                fillUsersTable()
-                $('.nav-tabs a[href="#table"]').tab('show')
+            formNewUser.reset()
+            fillUsersTable()
+            $('.nav-tabs a[href="#table"]').tab('show')
         }
     )
+
 }
