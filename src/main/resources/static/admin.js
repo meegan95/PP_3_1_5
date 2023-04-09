@@ -1,9 +1,32 @@
 const tableUser = document.getElementById('tableAllUsers')
 const tableOneUser = document.getElementById('tableOneUser')
 const currentUserLogin = document.getElementById('currentUserLogin')
+const currentUserRoles = document.getElementById('currentUserRoles')
+
 
 const url = 'http://localhost:8080/users/'
 const urlRoles = 'http://localhost:8080/users/roles'
+
+
+
+
+
+// роль сверху
+fillCurrentUserRole()
+function fillCurrentUserRole() {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let columnElement = ''
+            data.forEach(userFromRequest => {
+                if (userFromRequest.username === currentUserLogin.innerText)
+                columnElement += `
+        ${userFromRequest.role.map(role => role.name.substring(5))}
+           `
+            })
+            currentUserRoles.innerHTML = columnElement
+        })
+}
 
 
 // Таблица всех пользователей
