@@ -26,32 +26,34 @@ public class FirstRestController {
     }
 
     @GetMapping
-    public List<User> userList(){
+    public List<User> userList() {
         return userService.findAll();
     }
 
     @GetMapping("/roles")
-    public List<Role> roleList(){ return rolesService.getRoles();}
+    public List<Role> roleList() {
+        return rolesService.getRoles();
+    }
 
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@RequestBody User user){
+    public ResponseEntity<HttpStatus> create(@RequestBody User user) {
         userService.save(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable("id") int id){
+    public User getUser(@PathVariable("id") int id) {
         return userService.findOne(id);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<HttpStatus> update(@RequestBody User user, @PathVariable("id") int id){
+    public ResponseEntity<HttpStatus> update(@RequestBody User user, @PathVariable("id") int id) {
         userService.update(id, user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable("id") int id){
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") int id) {
         userService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }

@@ -4,10 +4,6 @@ const currentUserLogin = document.getElementById('currentUserLogin')
 
 const url = 'http://localhost:8080/users'
 
-
-// $('#tableUser').empty()
-
-
 fetch(url)
     .then(response => response.json())
     .then(data => {

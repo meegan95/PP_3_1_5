@@ -26,11 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/users/**").permitAll() // Добавил чтобы работал POSTMAN
-                .antMatchers("/admin/**").hasRole("ROLE_ADMIN") // Скрыл для тестов без контроллера
-                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER") // Открыл для тестов без контроллера /// Скрыл чтобы работал POSTMAN
+                .antMatchers("/users/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
+                .anyRequest().hasAnyRole("ROLE_ADMIN", "ROLE_USER")
                 .and()
-                .csrf().disable() // Добавил чтобы работал POSTMAN
+                .csrf().disable()
                 .formLogin()
                 .loginProcessingUrl("/process_login")
                 .successHandler(successUserHandler)
@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     GrantedAuthorityDefaults grantedAuthorityDefaults() {
-        return new GrantedAuthorityDefaults(""); // Удалить префикс ROLE_
+        return new GrantedAuthorityDefaults("");
     }
 
 }

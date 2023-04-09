@@ -162,7 +162,6 @@ function deleteCurrentUser(id) {
     }).then(() => {
         fillUsersTable()
         document.getElementById('closeDeleteModal').click()
-        // getSuccessMessage('User has been deleted!')
         $('.nav-tabs a[href="#table"]').tab('show')
     })
 }
@@ -197,15 +196,14 @@ function editCurrentUser(id) {
         })
     }).then((response) => {
         fillUsersTable()
-        // userEditForm.password.value = ''
         document.getElementById('closeEditModalWindow').click()
-        // getSuccessMessage('User has been updated!')
         $('.nav-tabs a[href="#table"]').tab('show')
     })
 }
 
 
-// Новый пользователь - работает, но роли множаться
+// Новый пользователь - //TODO работает, но роли множатся
+// TODO валидация
 function newUser(e) {
     e.preventDefault()
     const formNewUser = document.forms['formNewUser']

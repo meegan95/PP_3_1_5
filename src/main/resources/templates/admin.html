@@ -15,10 +15,6 @@
     <div class="row bg-dark bg-gradient m-0 p-2">
         <div class="col-11 p-2">
                 <span class="text-white h5">
-<!--                    <th:block class="font-weight-normal"-->
-                    <!--                                                  th:text="'username' + ', with roles: '+ 'role'">-->
-                    <!--                                            text-->
-                    <!--                                        </th:block>-->
                      <a class="text-white" id="currentUserLogin" sec:authorize="isAuthenticated()"
                         sec:authentication="principal.username">TEST</a>
                     <a>  with roles:</a>
@@ -144,7 +140,7 @@
                                                         <div class="col-sm-4 offset-4">
                                                             <strong>Enter age: </strong>
                                                             <br>
-                                                            <input type="number"  id="age" name="age"
+                                                            <input type="number" id="age" name="age"
                                                                    placeholder="Enter age"
                                                                    class="form-control"/>
                                                         </div>
@@ -176,7 +172,7 @@
 
                                                             <strong>Select Role</strong>
                                                             <br>
-                                                            <select multiple="multiple"  size="2" name="roles"
+                                                            <select multiple="multiple" size="2" name="roles"
                                                                     id="rolesPatch" class="form-control">
 
                                                             </select>
@@ -319,66 +315,66 @@
             <h5 class="card-header">Add new user</h5>
             <div class="card-body text-center">
                 <div id="newUserButton" class="form-justify-content-center mx-auto col-4">
-                                        <form id="formNewUser" name="formNewUser"
-                                              method="POST">
-                                            <p>
-                                                <label class="container-fluid col-6" for="firstName">
-                                                    <strong>First Name</strong>
-                                                    <input class="form-control" type="text"
-                                                           name="firstName" id="firstName2"
-                                                           placeholder="First name">
-                                                </label>
-                                            </p>
+                    <form id="formNewUser" name="formNewUser"
+                          method="POST">
+                        <p>
+                            <label class="container-fluid col-6" for="firstName">
+                                <strong>First Name</strong>
+                                <input class="form-control" type="text"
+                                       name="firstName" id="firstName2"
+                                       placeholder="First name">
+                            </label>
+                        </p>
 
-                                            <p>
-                                                <label class="container-fluid col-6" for="lastName">
-                                                    <strong>Last Name</strong>
-                                                    <input class="form-control" type="text"
-                                                           name="lastName" id="lastName2"
-                                                           placeholder="Last name">
-                                                </label>
-                                            </p>
+                        <p>
+                            <label class="container-fluid col-6" for="lastName">
+                                <strong>Last Name</strong>
+                                <input class="form-control" type="text"
+                                       name="lastName" id="lastName2"
+                                       placeholder="Last name">
+                            </label>
+                        </p>
 
-                                            <p>
-                                                <label class="container-fluid col-6" for="age">
-                                                    <strong>Age</strong>
-                                                    <input class="form-control" type="text"
-                                                           name="age" id="age2"
-                                                           placeholder="Age">
-                                                </label>
-                                            </p>
+                        <p>
+                            <label class="container-fluid col-6" for="age">
+                                <strong>Age</strong>
+                                <input class="form-control" type="text"
+                                       name="age" id="age2"
+                                       placeholder="Age">
+                            </label>
+                        </p>
 
-                                            <p>
-                                                <label class="container-fluid col-6" for="username">
-                                                    <strong>Email</strong>
-                                                    <input class="form-control" type="email"
-                                                           name="username" id="username2"
-                                                           placeholder="Email"
-                                                    >
-                                                </label>
-                                            </p>
+                        <p>
+                            <label class="container-fluid col-6" for="username">
+                                <strong>Email</strong>
+                                <input class="form-control" type="email"
+                                       name="username" id="username2"
+                                       placeholder="Email"
+                                >
+                            </label>
+                        </p>
 
-                                            <p>
-                                                <label class="container-fluid col-6" for="password">
-                                                    <strong>Password</strong>
-                                                    <input class="form-control password" type="password"
-                                                           name="password" id="password2"
-                                                           placeholder="Password">
-                                                </label>
-                                            </p>
-                                            <label class="container-fluid col-6"
-                                                   for="rolesNew">
-                                                <strong>Role</strong>
-                                                <select id="rolesNew" class="form-select"
-                                                        name="roles" multiple size="2">
-                                                </select>
-                                            </label>
-                                            <p>
-                                                <button type="submit" id="newUserButton2" class="btn btn-success">Add new user
-                                                </button>
-                                            </p>
+                        <p>
+                            <label class="container-fluid col-6" for="password">
+                                <strong>Password</strong>
+                                <input class="form-control password" type="password"
+                                       name="password" id="password2"
+                                       placeholder="Password">
+                            </label>
+                        </p>
+                        <label class="container-fluid col-6"
+                               for="rolesNew">
+                            <strong>Role</strong>
+                            <select id="rolesNew" class="form-select"
+                                    name="roles" multiple size="2">
+                            </select>
+                        </label>
+                        <p>
+                            <button type="submit" id="newUserButton2" class="btn btn-success">Add new user
+                            </button>
+                        </p>
 
-                                        </form>
+                    </form>
                 </div>
             </div>
 
