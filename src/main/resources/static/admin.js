@@ -8,11 +8,9 @@ const url = 'http://localhost:8080/users/'
 const urlRoles = 'http://localhost:8080/users/roles'
 
 
-
-
-
 // роль сверху
 fillCurrentUserRole()
+
 function fillCurrentUserRole() {
     fetch(url)
         .then(response => response.json())
@@ -20,7 +18,7 @@ function fillCurrentUserRole() {
             let columnElement = ''
             data.forEach(userFromRequest => {
                 if (userFromRequest.username === currentUserLogin.innerText)
-                columnElement += `
+                    columnElement += `
         ${userFromRequest.role.map(role => role.name.substring(5))}
            `
             })
@@ -127,7 +125,7 @@ function getRoles() {
                     ${element.name.substring(5)}
                     </option>
                     `
-                } else {
+                } else if (element.id === 1) {
                     resRoles +=
                         `
                     <option value='${element.id}' >
@@ -152,6 +150,7 @@ function fillUserForm(id, form, method) {
             form.age.value = data.age
             form.password.value = data.password
             userSelectRole(data.role)
+            console.log(data.role)
 
             function userSelectRole(role) {
 
@@ -161,10 +160,34 @@ function fillUserForm(id, form, method) {
                         let rolesToEdit = document.getElementById('roles' + method)
                         let columnElement = ''
                         data.forEach(element => {
-                            columnElement += `
-                                <option value='${element.id}'>
+                            if (element.id === 2) {
+                                columnElement +=
+                                    `
+                    <option value='${element.id}' selected>
                     ${element.name.substring(5)}
-                    </option> `
+                    </option>
+                    `
+                            } else if (element.id === 1) {
+                                columnElement +=
+                                    `
+                    <option value='${element.id}' >
+                    ${element.name.substring(5)}
+                    </option>
+                    `
+                            }
+
+                            // {
+                            //     "id": 2,
+                            //     "name": "ROLE_USER",
+                            //     "authority": "ROLE_USER",
+                            //     "roleName": "USER "
+                            // }
+                    //         columnElement += `
+                    //             <option value='${element.id}'>
+                    // ${element.name.substring(5)}
+                    // </option> `
+
+
                         })
                         rolesToEdit.innerHTML = columnElement
                     })
@@ -234,8 +257,6 @@ function newUser(e) {
             })
         }
     }
-
-    console.log(newUserRoles)
     fetch(url, {
         method: 'POST',
         headers: {
