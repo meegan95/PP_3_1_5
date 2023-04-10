@@ -150,7 +150,6 @@ function fillUserForm(id, form, method) {
             form.age.value = data.age
             form.password.value = data.password
             userSelectRole(data.role)
-            console.log(data.role)
 
             function userSelectRole(role) {
 
@@ -175,19 +174,6 @@ function fillUserForm(id, form, method) {
                     </option>
                     `
                             }
-
-                            // {
-                            //     "id": 2,
-                            //     "name": "ROLE_USER",
-                            //     "authority": "ROLE_USER",
-                            //     "roleName": "USER "
-                            // }
-                    //         columnElement += `
-                    //             <option value='${element.id}'>
-                    // ${element.name.substring(5)}
-                    // </option> `
-
-
                         })
                         rolesToEdit.innerHTML = columnElement
                     })
