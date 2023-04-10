@@ -2,6 +2,10 @@ package ru.kata.spring.boot_security.demo.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,14 +18,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    @Email
+    @NotEmpty
     @Column(name = "username")
     private String username;
+    @Min(value = 0)
     @Column(name = "age")
     private int age;
+    @NotEmpty
     @Column(name = "password")
     private String password;
+
+    @NotEmpty
     @Column
     private String firstName;
+    @NotEmpty
     @Column
     private String lastName;
 

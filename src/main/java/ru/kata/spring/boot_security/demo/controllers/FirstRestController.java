@@ -4,12 +4,15 @@ package ru.kata.spring.boot_security.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.services.RolesService;
 import ru.kata.spring.boot_security.demo.services.UserService;
+import ru.kata.spring.boot_security.demo.util.UsersValidator;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,11 +21,13 @@ public class FirstRestController {
 
     private final UserService userService;
     private final RolesService rolesService;
+    private final UsersValidator usersValidator;
 
     @Autowired
-    public FirstRestController(UserService userService, RolesService rolesService) {
+    public FirstRestController(UserService userService, RolesService rolesService, UsersValidator usersValidator) {
         this.userService = userService;
         this.rolesService = rolesService;
+        this.usersValidator = usersValidator;
     }
 
     @GetMapping
@@ -36,9 +41,14 @@ public class FirstRestController {
     }
 
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@RequestBody User user) {
-        userService.save(user);
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<HttpStatus> create(@RequestBody @Valid User user, BindingResult bindingResult) {
+        usersValidator.validate(user, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().body(HttpStatus.BAD_REQUEST);
+        } else {
+            userService.save(user);
+            return ResponseEntity.ok(HttpStatus.OK);
+        }
     }
 
     @GetMapping("/{id}")

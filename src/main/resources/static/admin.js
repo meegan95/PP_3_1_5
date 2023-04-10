@@ -257,10 +257,33 @@ function newUser(e) {
             roles: newUserRoles
         })
     }).then((response) => {
-            formNewUser.reset()
-            fillUsersTable()
-            $('.nav-tabs a[href="#table"]').tab('show')
+            if (response.ok) {
+                formNewUser.reset()
+                fillUsersTable()
+                $('.nav-tabs a[href="#table"]').tab('show')
+            } else {
+                getErrorMessage({
+                    "message": "Error. Enter valid data"
+                }, formNewUser)
+            }
         }
     )
 
+}
+
+//получение окна сообщения с ошибками
+function getErrorMessage(errorJSON, form) {
+    let errorBody = document.getElementById('errorBody')
+    let errorBodyText = ''
+    for (let line of errorJSON.message.split(';')) {
+        errorBodyText +=
+            `
+             <a>${line}</a>
+             <br>
+             `
+    }
+    //console.log(errorJSON.message)
+    errorBody.innerHTML = errorBodyText
+    form.password.value = ''
+    $('#errorModal').modal('toggle')
 }
