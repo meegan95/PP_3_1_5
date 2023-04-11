@@ -43,16 +43,16 @@ function fillUsersTable() {
               <td>${userFromRequest.age}</td>
               <td>${userFromRequest.username}</td>
               <td>${userFromRequest.role.map(role => role.name.substring(5))}</td>
-              <td>
-                    <button type="button" class="btn btn-danger delete" id="buttonDelete"
-                    data-index="${userFromRequest.id}" data-bs-target="#modalDelete" data-bs-toggle="modal">
-                    Delete
-                    </button>
-                    </td>
-                    <td>
+              <td>              
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="buttonEdit"
                     data-index="${userFromRequest.id}" data-bs-target="#modalEdit">
                     Edit
+                    </button>
+                    </td>
+                    <td>
+                    <button type="button" class="btn btn-danger delete" id="buttonDelete"
+                    data-index="${userFromRequest.id}" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                    Delete
                     </button>
                     </td>
                     <td>

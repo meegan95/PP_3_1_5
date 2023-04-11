@@ -14,6 +14,7 @@ import ru.kata.spring.boot_security.demo.util.UsersValidator;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/users")
@@ -44,6 +45,7 @@ public class FirstRestController {
     public ResponseEntity<HttpStatus> create(@RequestBody @Valid User user, BindingResult bindingResult) {
         usersValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
+            System.out.println(Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
             return ResponseEntity.badRequest().body(HttpStatus.BAD_REQUEST);
         } else {
             userService.save(user);

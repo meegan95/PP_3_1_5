@@ -9,11 +9,15 @@ import org.springframework.validation.Validator;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.services.UsersDetailsService;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 @Component
 public class UsersValidator implements Validator {
     private final UsersDetailsService usersDetailsService;
-
+    private Pattern pattern;
+    private Matcher matcher;
     @Autowired
     public UsersValidator(UsersDetailsService usersDetailsService) {
         this.usersDetailsService = usersDetailsService;
@@ -36,7 +40,8 @@ public class UsersValidator implements Validator {
         } catch (UsernameNotFoundException ignored) {
             return;
         }
-        errors.rejectValue("username", "", "Пользовтель с таким именем уже существует");
+        errors.rejectValue("username", "", "Пользователь с таким именем уже существует");
     }
+
 
 }

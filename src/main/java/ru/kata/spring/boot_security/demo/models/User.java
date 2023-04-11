@@ -4,7 +4,6 @@ package ru.kata.spring.boot_security.demo.models;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.HashSet;
