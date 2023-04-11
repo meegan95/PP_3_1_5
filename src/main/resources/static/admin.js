@@ -158,20 +158,23 @@ function fillUserForm(id, form, method) {
                     .then(response => response.json())
                     .then(data => {
                         let rolesToEdit = document.getElementById('roles' + method)
+                        let count = 0
                         let columnElement = ''
                         data.forEach(element => {
                             // console.log(element.name)
                             console.log(role.map(role => role.name))
                             let roleCurrent = role.map(role => role.name)
 
-                            if (roleCurrent.includes(element.name)) {
+
+                            if (roleCurrent.includes(element.name) && count <= 0) {
+                                count++
                                 columnElement +=
                                     `
                     <option value='${element.id}' selected>
                     ${element.name.substring(5)}
                     </option>
                     `
-                            } else {
+                            } else if (!roleCurrent.includes(element.name)) {
                                 columnElement +=
                                     `
                     <option value='${element.id}' >
