@@ -150,6 +150,7 @@ function fillUserForm(id, form, method) {
             form.age.value = data.age
             form.password.value = data.password
             userSelectRole(data.role)
+            console.log(data.role)
 
             function userSelectRole(role) {
 
@@ -159,14 +160,18 @@ function fillUserForm(id, form, method) {
                         let rolesToEdit = document.getElementById('roles' + method)
                         let columnElement = ''
                         data.forEach(element => {
-                            if (element.id === 2) {
+                            // console.log(element.name)
+                            console.log(role.map(role => role.name))
+                            let roleCurrent = role.map(role => role.name)
+
+                            if (roleCurrent.includes(element.name)) {
                                 columnElement +=
                                     `
                     <option value='${element.id}' selected>
                     ${element.name.substring(5)}
                     </option>
                     `
-                            } else if (element.id === 1) {
+                            } else {
                                 columnElement +=
                                     `
                     <option value='${element.id}' >
