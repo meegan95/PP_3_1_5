@@ -1,0 +1,218 @@
+DELETE http://94.198.50.185:7081/api/users/3
+Content-Type: application/json
+Content-Length: 1426
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=AD061C1A4A624316ED7354AC4A857B6A
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "Thomas",
+  "lastName": "Shelby",
+  "age": 26
+}
+
+
+
+#Заходим в идею:
+#1) Тулс -> http клиент -> креат
+#2) Адрес из условия берем http://94.198.50.185:7081/api/users
+#3) Повторяем процедуру 4 раза, чтоб получить 4 метода
+#4) Меняем 2-4 методы на названия из задачи (гет, пост, пут, делит)
+#5) меняет в 2-4 методах Content-Type: application/json  (чтоб не получать 415 ошибку)
+#6) Чтоб не мучаться с синтиаксисом, просто запускаем программу и получаем 2х пользователей. Копируем синтаксис и вставоем в методы 2 и 3, заменяя текущих пользователей, на пользователей из задачи
+#7) В методе делит просто добавляем /3
+#8) В полученных файлах просто копируем части ключа и решение готово.
+#На всё 2,5...ну 3 минуты потолок, если все делать по инструкции.
+#п.с. никакие куки и прочее не надо, все из коробки
+#ппс. Методы разделяются ### (тремя решетками)
+#всем удачи на ревью
+
+<> 2023-04-11T123500-2.200.txt
+
+###
+
+PUT http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 70
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=AD061C1A4A624316ED7354AC4A857B6A
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "Thomas",
+  "lastName": "Shelby",
+  "age": 26
+}
+
+<> 2023-04-11T123500-1.200.txt
+
+###
+
+POST http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 68
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=AD061C1A4A624316ED7354AC4A857B6A
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "James",
+  "lastName": "Brown",
+  "age": 21
+}
+
+<> 2023-04-11T123500.200.txt
+
+###
+
+GET http://94.198.50.185:7081/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=50190C61356E9C252231C61A42135AF0
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-11T123500.200.json
+
+###
+
+PUT http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 70
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=B270DC315D43DF1D0736B99138130ECD
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "Thomas",
+  "lastName": "Shelby",
+  "age": 26
+}
+
+<> 2023-04-11T123052.400.txt
+
+###
+
+PUT http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 70
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=B33CC36AB3422349B3062EDC8A026959
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "Thomas",
+  "lastName": "Shelby",
+  "age": 21
+}
+
+<> 2023-04-11T122916.400.txt
+
+###
+
+POST http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 68
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=9B2CF53857748CB7B38F168576F06BD4
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "James",
+  "lastName": "Brown",
+  "age": 21
+}
+
+<> 2023-04-11T122841.200.txt
+
+###
+
+GET http://94.198.50.185:7081/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=6476160446E4F79B7B0D8CFA9A03EE98
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-11T122745.200.json
+
+###
+
+PUT http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 70
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=BE63BFECD55D1FCC4358F6240BE25A22
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "Thomas",
+  "lastName": "Shelby",
+  "age": 21
+}
+
+<> 2023-04-11T122422.400.txt
+
+###
+
+POST http://94.198.50.185:7081/api/users
+Content-Type: application/json
+Content-Length: 68
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=83FF133F9C16AF02C39F236329F846C4
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "James",
+  "lastName": "Brown",
+  "age": 21
+}
+
+<> 2023-04-11T122245.200.txt
+
+###
+
+POST http://94.198.50.185:7081/api/users
+Accept: application/json
+Content-Length: 68
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Cookie: JSESSIONID=67643258474EE8FAF346E31E40CC705C
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 3,
+  "name": "James",
+  "lastName": "Brown",
+  "age": 21
+}
+
+<> 2023-04-11T122113.415.json
+
+###
+
+GET http://94.198.50.185:7081/api/users
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-11T121911.200.json
+
+###
+

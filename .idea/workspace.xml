@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6e60d407-2d7b-446f-976a-8dc273c5a34c" name="Changes" comment="current roles selects">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/configs/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controllers/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controllers/WebSocketEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/models/ChatMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2NxOOK2kE5pz6IJikf8WhUl07md" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/Users/a1/IdeaProjects/PP_3_1_5/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "GitLink.ProjectSettings",
+    "spring.configuration.checksum": "7e3a243e66b01669507087d96c56f184",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controllers" />
+      <recent name="$PROJECT_DIR$/src/main/resources/css" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.kata.spring.boot_security.demo.models" />
+      <recent name="ru.kata.spring.boot_security.demo.configs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringBootSecurityDemoApplication">
+    <configuration name="All in rest-api" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="SpringBootSecurityDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="spring-boot_security-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.kata.spring.boot_security.demo.SpringBootSecurityDemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.All in rest-api" />
+        <item itemvalue="HTTP Request.rest-api | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e60d407-2d7b-446f-976a-8dc273c5a34c" name="Changes" comment="" />
+      <created>1680602234830</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680602234830</updated>
+      <workItem from="1680602237275" duration="14016000" />
+      <workItem from="1680684663327" duration="23131000" />
+      <workItem from="1680771044462" duration="35486000" />
+      <workItem from="1681023598769" duration="9846000" />
+      <workItem from="1681057812715" duration="5560000" />
+      <workItem from="1681116599689" duration="14976000" />
+      <workItem from="1681199511234" duration="5050000" />
+      <workItem from="1681803518905" duration="160000" />
+      <workItem from="1683114082722" duration="322000" />
+      <workItem from="1683114450642" duration="609000" />
+      <workItem from="1688143990822" duration="23000" />
+      <workItem from="1690871890130" duration="4802000" />
+      <workItem from="1690893882483" duration="4072000" />
+    </task>
+    <task id="LOCAL-00001" summary="first fetch works">
+      <created>1680694040027</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680694040027</updated>
+    </task>
+    <task id="LOCAL-00002" summary="data works">
+      <created>1680697851471</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680697851471</updated>
+    </task>
+    <task id="LOCAL-00003" summary="table filled but not correctly">
+      <created>1680700196366</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680700196366</updated>
+    </task>
+    <task id="LOCAL-00004" summary="table filled more correctly">
+      <created>1680700758388</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680700758388</updated>
+    </task>
+    <task id="LOCAL-00005" summary="table filled with roles">
+      <created>1680703568334</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680703568334</updated>
+    </task>
+    <task id="LOCAL-00006" summary="table filled with roles right way">
+      <created>1680712645477</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680712645477</updated>
+    </task>
+    <task id="LOCAL-00007" summary="admin panel 0.2">
+      <created>1680716876786</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680716876786</updated>
+    </task>
+    <task id="LOCAL-00008" summary="admin panel 0.3">
+      <created>1680720347457</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680720347458</updated>
+    </task>
+    <task id="LOCAL-00009" summary="admin panel 0.4">
+      <created>1680723564906</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680723564906</updated>
+    </task>
+    <task id="LOCAL-00010" summary="admin panel 0.45">
+      <created>1680723827170</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680723827170</updated>
+    </task>
+    <task id="LOCAL-00011" summary="modal buttons view">
+      <created>1680724143904</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680724143904</updated>
+    </task>
+    <task id="LOCAL-00012" summary="second modal button active">
+      <created>1680724561846</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680724561846</updated>
+    </task>
+    <task id="LOCAL-00013" summary="modal edit filled">
+      <created>1680725567396</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680725567396</updated>
+    </task>
+    <task id="LOCAL-00014" summary="modal delete filled">
+      <created>1680725801225</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680725801225</updated>
+    </task>
+    <task id="LOCAL-00015" summary="new user button filled">
+      <created>1680726637430</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680726637430</updated>
+    </task>
+    <task id="LOCAL-00016" summary="new user button filled">
+      <created>1680727889888</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680727889888</updated>
+    </task>
+    <task id="LOCAL-00017" summary="commit before delete controllers">
+      <created>1680773246260</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680773246260</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add view controllers in MvcConfig and commented unnecessary code">
+      <created>1680774256693</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680774256693</updated>
+    </task>
+    <task id="LOCAL-00019" summary="auth works but filling pages need upgrade">
+      <created>1680774962778</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1680774962778</updated>
+    </task>
+    <task id="LOCAL-00020" summary="current user on the top of admin panel">
+      <created>1680776114925</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680776114925</updated>
+    </task>
+    <task id="LOCAL-00021" summary="current user on the top of user panel">
+      <created>1680776358059</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680776358059</updated>
+    </task>
+    <task id="LOCAL-00022" summary="current filled table user panel">
+      <created>1680776926979</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1680776926979</updated>
+    </task>
+    <task id="LOCAL-00023" summary="current filled table user in admin panel">
+      <created>1680777782495</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680777782495</updated>
+    </task>
+    <task id="LOCAL-00024" summary="current filled table user in admin panel">
+      <created>1680780658407</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1680780658407</updated>
+    </task>
+    <task id="LOCAL-00025" summary="current filled table user in admin panel">
+      <created>1680781818154</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680781818154</updated>
+    </task>
+    <task id="LOCAL-00026" summary="modal edit fills correctly">
+      <created>1680856172438</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1680856172438</updated>
+    </task>
+    <task id="LOCAL-00027" summary="modal delete fills correctly">
+      <created>1680857454526</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1680857454526</updated>
+    </task>
+    <task id="LOCAL-00028" summary="modal edit delete fills roles">
+      <created>1680859233803</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1680859233803</updated>
+    </task>
+    <task id="LOCAL-00029" summary="delete button works">
+      <created>1680863728424</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1680863728424</updated>
+    </task>
+    <task id="LOCAL-00030" summary="delete button works correctly">
+      <created>1680864029345</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1680864029345</updated>
+    </task>
+    <task id="LOCAL-00031" summary="edit button works">
+      <created>1680865136665</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1680865136665</updated>
+    </task>
+    <task id="LOCAL-00032" summary="edit button works correctly">
+      <created>1680866447081</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1680866447081</updated>
+    </task>
+    <task id="LOCAL-00033" summary="new user tab works">
+      <created>1680871153799</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1680871153799</updated>
+    </task>
+    <task id="LOCAL-00034" summary="new user tab works with roles">
+      <created>1681026125426</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1681026125426</updated>
+    </task>
+    <task id="LOCAL-00035" summary="new user tab works with roles - but roles multiples">
+      <created>1681026917461</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1681026917461</updated>
+    </task>
+    <task id="LOCAL-00036" summary="clean">
+      <created>1681028786017</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1681028786017</updated>
+    </task>
+    <task id="LOCAL-00037" summary="autocomplete password">
+      <created>1681050822809</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1681050822809</updated>
+    </task>
+    <task id="LOCAL-00038" summary="correct view roles current user">
+      <created>1681057892394</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1681057892394</updated>
+    </task>
+    <task id="LOCAL-00039" summary="correct view roles new user">
+      <created>1681059683682</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1681059683682</updated>
+    </task>
+    <task id="LOCAL-00040" summary="correct view roles new user">
+      <created>1681120499821</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1681120499821</updated>
+    </task>
+    <task id="LOCAL-00041" summary="correct view roles new user">
+      <created>1681120538910</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1681120538910</updated>
+    </task>
+    <task id="LOCAL-00042" summary="validation">
+      <created>1681151848986</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1681151848986</updated>
+    </task>
+    <task id="LOCAL-00043" summary="change buttons places">
+      <created>1681202008425</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1681202008425</updated>
+    </task>
+    <task id="LOCAL-00044" summary="current roles selects">
+      <created>1681203223815</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1681203223815</updated>
+    </task>
+    <task id="LOCAL-00045" summary="current roles selects">
+      <created>1681203694083</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1681203694083</updated>
+    </task>
+    <task id="LOCAL-00046" summary="current roles selects">
+      <created>1681204156044</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1681204156044</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new user button filled" />
+    <MESSAGE value="commit before delete controllers" />
+    <MESSAGE value="add view controllers in MvcConfig and commented unnecessary code" />
+    <MESSAGE value="auth works but filling pages need upgrade" />
+    <MESSAGE value="current user on the top of admin panel" />
+    <MESSAGE value="current user on the top of user panel" />
+    <MESSAGE value="current filled table user panel" />
+    <MESSAGE value="current filled table user in admin panel" />
+    <MESSAGE value="modal edit fills correctly" />
+    <MESSAGE value="modal delete fills correctly" />
+    <MESSAGE value="modal edit delete fills roles" />
+    <MESSAGE value="delete button works" />
+    <MESSAGE value="delete button works correctly" />
+    <MESSAGE value="edit button works" />
+    <MESSAGE value="edit button works correctly" />
+    <MESSAGE value="new user tab works" />
+    <MESSAGE value="new user tab works with roles" />
+    <MESSAGE value="new user tab works with roles - but roles multiples" />
+    <MESSAGE value="clean" />
+    <MESSAGE value="autocomplete password" />
+    <MESSAGE value="correct view roles current user" />
+    <MESSAGE value="correct view roles new user" />
+    <MESSAGE value="validation" />
+    <MESSAGE value="change buttons places" />
+    <MESSAGE value="current roles selects" />
+    <option name="LAST_COMMIT_MESSAGE" value="current roles selects" />
+  </component>
+</project>
